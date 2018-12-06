@@ -5,6 +5,7 @@ import { Button, Tile, Overlay } from 'react-native-elements';
 import BgImg from '../assets/bgImgDT.png';
 import Nav from './Nav';
 
+
 export default class ItineraryScreen extends React.Component {
   state = {
     attractions: [],
@@ -30,6 +31,10 @@ export default class ItineraryScreen extends React.Component {
     const doesShow = this.state.isVisible;
     this.setState({ isVisible: !doesShow });
   };
+  componentDidMount = () => {
+    this.setState({ loading: false });
+    this.randomAttractionsHandler();
+  };
   render() {
     const backgroundImage = {
       flex: 1,
@@ -38,6 +43,7 @@ export default class ItineraryScreen extends React.Component {
       width: this.state.contentSize.width,
       height: this.state.contentSize.height,
     };
+
     return (
       <>
         <Nav
@@ -52,16 +58,21 @@ export default class ItineraryScreen extends React.Component {
           }
         >
           <Image source={BgImg} style={backgroundImage} resizeMode="repeat" />
+          <Nav
+            openDrawer={this.props.navigation.openDrawer}
+            style={{ position: "absolute" }}
+          />
           {this.state.randomAttractions.map((attraction, index) => {
             return (
               <View key={index} style={{ width: 70 }}>
                 <Tile
-                  style={{ alignContent: 'center', justifyContent: 'center' }}
+                  style={{ alignContent: "center", justifyContent: "center" }}
                   imageSrc={{
                     uri: this.imageHandler(
                       attraction.images,
-                      'https://itefix.net/sites/default/files/not_available.png',
-                    ),
+                      "https://www.visitmanchester.com/imageresizer/?image=%2Fdbimgs%2FCityscape%20Sunset%20website.jpg&action=Background_Overlay"
+                    )
+
                   }}
                   onPress={this.keepDestinationHandler}
                   title={attraction.name}
@@ -71,6 +82,7 @@ export default class ItineraryScreen extends React.Component {
           })}
           <View
             style={{
+
               flexDirection: 'column',
               justifyContent: 'center',
               padding: 10,
@@ -86,7 +98,6 @@ export default class ItineraryScreen extends React.Component {
                 marginBottom: 10,
                 marginTop: 10,
                 borderWidth: 1,
-                // width: '89%',
                 alignSelf: 'center',
               }}
               title="Map This Itinerary!"
@@ -105,7 +116,6 @@ export default class ItineraryScreen extends React.Component {
                 marginBottom: 10,
                 marginTop: 10,
                 borderWidth: 1,
-                // width: '89%',
                 alignSelf: 'center',
               }}
               title="Different Itinerary"
@@ -120,7 +130,6 @@ export default class ItineraryScreen extends React.Component {
                 marginBottom: 10,
                 marginTop: 10,
                 borderWidth: 1,
-                // width: '89%',
                 alignSelf: 'center',
               }}
               title="Save Itinerary"

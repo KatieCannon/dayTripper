@@ -16,12 +16,16 @@ import Nav from './Nav';
 
 export default class PlanScreen extends React.Component {
   state = {
-    location: 'Manchester',
-    username: 'williamwalkers',
+    location: '',
+    username: '',
     attractions: [],
   };
+
+  componentWillUnmount() {
+    console.log("unmounted");
+  }
+
   render() {
-    console.log('!!!!', this.props, '!!!!');
     return (
       <>
         <Nav
@@ -87,6 +91,7 @@ export default class PlanScreen extends React.Component {
     );
   }
 }
+
 const styles = StyleSheet.create({
   view: {
     flex: 1,
