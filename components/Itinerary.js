@@ -1,9 +1,9 @@
-import React from "react";
-import { View, Text, Image, ScrollView, StyleSheet } from "react-native";
-import _ from "lodash";
-import { Button, Tile, Overlay } from "react-native-elements";
-import BgImg from "../assets/bgImgDT.png";
-import Nav from "./Nav";
+import React from 'react';
+import { View, Text, Image, ScrollView, StyleSheet } from 'react-native';
+import _ from 'lodash';
+import { Button, Tile, Overlay } from 'react-native-elements';
+import BgImg from '../assets/bgImgDT.png';
+import Nav from './Nav';
 
 
 export default class ItineraryScreen extends React.Component {
@@ -12,14 +12,13 @@ export default class ItineraryScreen extends React.Component {
     randomAttractions: [],
     isVisible: false,
     contentSize: { width: 0, height: 0 },
-    loading: true
   };
   randomAttractionsHandler = () => {
     const locationsArray = this.props.navigation.state.params.attractions;
     const randomAttractions = _.shuffle(locationsArray).slice(0, 5);
     this.setState({
       attractions: locationsArray,
-      randomAttractions: randomAttractions
+      randomAttractions: randomAttractions,
     });
   };
   imageHandler = (images, defaultImage) => {
@@ -39,14 +38,21 @@ export default class ItineraryScreen extends React.Component {
   render() {
     const backgroundImage = {
       flex: 1,
-      position: "absolute",
-      resizeMode: "repeat",
+      position: 'absolute',
+      resizeMode: 'repeat',
       width: this.state.contentSize.width,
-      height: this.state.contentSize.height
+      height: this.state.contentSize.height,
     };
-      return (
+
+    return (
+      <>
+        <Nav
+          openDrawer={this.props.navigation.openDrawer}
+          style={{ position: 'absolute' }}
+        />
         <ScrollView
-          style={{ height: "80%" }}
+          marginTop={69}
+          style={{ height: '80%' }}
           onContentSizeChange={(width, height) =>
             this.setState({ contentSize: { width, height } })
           }
@@ -66,6 +72,7 @@ export default class ItineraryScreen extends React.Component {
                       attraction.images,
                       "https://www.visitmanchester.com/imageresizer/?image=%2Fdbimgs%2FCityscape%20Sunset%20website.jpg&action=Background_Overlay"
                     )
+
                   }}
                   onPress={this.keepDestinationHandler}
                   title={attraction.name}
@@ -75,67 +82,75 @@ export default class ItineraryScreen extends React.Component {
           })}
           <View
             style={{
-              flexDirection: "column",
-              justifyContent: "center",
+
+              flexDirection: 'column',
+              justifyContent: 'center',
               padding: 10,
-              borderRadius: 10
+              borderRadius: 10,
             }}
           >
             <Button
+              fontSize={16}
+              fontFamily="KohinoorDevanagari-Semibold"
               buttonStyle={{
-                backgroundColor: "red",
+                backgroundColor: 'rgba(0, 112, 149, 1)',
                 borderRadius: 5,
                 marginBottom: 10,
                 marginTop: 10,
                 borderWidth: 1,
-                width: "89%",
-                marginLeft: 29
+                alignSelf: 'center',
               }}
-              title="Randomize"
-              onPress={this.randomAttractionsHandler}
-            />
-            <Button
-              buttonStyle={{
-                backgroundColor: "red",
-                borderRadius: 5,
-                marginBottom: 10,
-                marginTop: 10,
-                borderWidth: 1,
-                width: "89%",
-                marginLeft: 29
-              }}
-              title="Save Map"
+              title="Map This Itinerary!"
               onPress={() =>
-                this.props.navigation.navigate("SavedMaps", {
-                  randomAttractions: this.state.randomAttractions
+                this.props.navigation.navigate('Map', {
+                  randomAttractions: this.state.randomAttractions,
                 })
               }
             />
             <Button
+              fontSize={16}
+              fontFamily="KohinoorDevanagari-Semibold"
               buttonStyle={{
-                backgroundColor: "red",
+                backgroundColor: 'rgba(0, 112, 149, 0.7)',
                 borderRadius: 5,
                 marginBottom: 10,
                 marginTop: 10,
                 borderWidth: 1,
-                width: "89%",
-                marginLeft: 29
+                alignSelf: 'center',
               }}
-              title="Map locations"
+              title="Different Itinerary"
+              onPress={this.randomAttractionsHandler}
+            />
+            <Button
+              fontSize={16}
+              fontFamily="KohinoorDevanagari-Semibold"
+              buttonStyle={{
+                backgroundColor: 'rgba(0, 112, 149, 0.4)',
+                borderRadius: 5,
+                marginBottom: 10,
+                marginTop: 10,
+                borderWidth: 1,
+                alignSelf: 'center',
+              }}
+              title="Save Itinerary"
               onPress={() =>
-                this.props.navigation.navigate("Map", {
-                  randomAttractions: this.state.randomAttractions
+                this.props.navigation.navigate('SavedMaps', {
+                  randomAttractions: this.state.randomAttractions,
                 })
               }
             />
           </View>
         </ScrollView>
-      );
-    }
+      </>
+    );
   }
+  componentDidMount = () => {
+    console.log('log 1');
+    this.randomAttractionsHandler();
+  };
 }
 const styles = StyleSheet.create({
   backgroundImage: {
-    flex: 1
-  }
+    flex: 1,
+  },
 });
