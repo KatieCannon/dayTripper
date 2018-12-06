@@ -110,13 +110,13 @@ const RootStack = createDrawerNavigator(
     Profile: {
       screen: ProfileScreen,
       navigationOptions: () => ({
-        title: 'Profile',
-        drawerIcon: () => (
-          <Image
-            source={require('../assets/profile.png')}
-            style={[styles.icon]}
-          />
-        ),
+        title: '',
+        // drawerIcon: () => (
+        // <Image
+        //   source={require('../assets/profile.png')}
+        //   style={[styles.icon]}
+        // />
+        // ),
       }),
     },
     DashBoard: {
@@ -183,14 +183,14 @@ const RootStack = createDrawerNavigator(
     initialRootName: 'Home',
     order: [
       'Home',
-      'Profile',
+      'Preferences',
       'Plan',
       'Itinerary',
       'Map',
       'SavedMaps',
-      'Preferences',
       'Login',
       'SignUp',
+      'Profile',
     ],
     contentOptions: {
       activeBackgroundColor: 'rgba(0, 112, 149, 1)',
