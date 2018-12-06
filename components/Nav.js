@@ -1,5 +1,5 @@
-import React from "react";
-import { Icon, Header, View } from "react-native-elements";
+import React from 'react';
+import { Icon, Header } from 'react-native-elements';
 
 export default class Nav extends React.Component {
   render() {
@@ -8,21 +8,14 @@ export default class Nav extends React.Component {
         <Header
           title="drawer"
           placement="left"
-          leftComponent={
-            <Icon
-              name="face"
-              color="white"
-              // onPress={() => this.props.navigation.navigate("Profile")}
-            />
-          }
+          leftComponent={<Icon name="map" color="white" type="foundation" />}
           centerComponent={{
-            text: "Day Tripper",
+            text: 'Day Tripper',
             style: {
-              color: "#fff",
-              fontWeight: "bold",
-              fontFamily: "Gill Sans",
-              fontSize: 25
-            }
+              color: '#fff',
+              fontFamily: 'KohinoorDevanagari-Semibold',
+              fontSize: 22,
+            },
           }}
           rightComponent={
             <Icon
@@ -32,24 +25,13 @@ export default class Nav extends React.Component {
             />
           }
           outerContainerStyles={{
-            backgroundColor: "red",
-            position: "absolute",
+            backgroundColor: 'rgb(0, 112, 149)',
+            position: 'absolute',
             top: 0,
             left: 0,
-            right: 0
+            right: 0,
           }}
         />
-        {/* <Icon
-          name="menu"
-          color="white"
-          onPress={() => this.props.openDrawer()}
-          Style={{
-            backgroundColor: "red",
-            position: "absolute",
-            top: 5,
-            right: 5
-          }}
-        /> */}
       </>
     );
   }
