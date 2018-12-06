@@ -31,9 +31,9 @@ export default class ProfileScreen extends React.Component {
           openDrawer={this.props.navigation.openDrawer}
           style={{ position: 'absolute' }}
         />
-        {/* <KeyboardAvoidingView behavior="padding" enabled> */}
+        
         <Card containerStyle={{ width: 300 }}>
-          {/* <ScrollView keyboardDismissMode="on-drag"> */}
+         
           <FormLabel
             labelStyle={{
               fontSize: 16,
@@ -98,7 +98,7 @@ export default class ProfileScreen extends React.Component {
               alignSelf: 'center',
             }}
             fontWeight={'bold'}
-            // fontSize={20}
+            
             title="Add my Info!"
             onPress={() => {
               api
@@ -114,9 +114,9 @@ export default class ProfileScreen extends React.Component {
                 });
             }}
           />
-          {/* </ScrollView> */}
+       
         </Card>
-        {/* </KeyboardAvoidingView> */}
+      
       </KeyboardAvoidingView>
     );
   }
