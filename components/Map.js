@@ -76,7 +76,6 @@ export default class MapScreen extends React.Component {
   };
 
   generateDirections = (start, end) => {
-    console.log(JSON.stringify(end));
     getDirections(start, end).then(coords => {
       this.setState({
         currentDestination: end,
@@ -97,7 +96,7 @@ export default class MapScreen extends React.Component {
         longitude: this.state.currentDestination.longitude
       }
     );
-    console.log("we are " + distanceBetweenLocations + " from our destination");
+    // console.log("we are " + distanceBetweenLocations + " from our destination");
     if (distanceBetweenLocations < MINIMUM_DISTANCE_TO_DESTINATION) {
       this.setState({
         isCloseToDestination: true
@@ -161,7 +160,7 @@ export default class MapScreen extends React.Component {
             <MapView.Polyline
               key={index}
               coordinates={coords}
-              stroke={10}
+              strokeWidth={5}
               strokeColor="red"
             />
           );
