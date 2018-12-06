@@ -1,5 +1,6 @@
 import React from 'react';
 import { Icon, Header } from 'react-native-elements';
+import { Image } from 'react-native';
 
 export default class Nav extends React.Component {
   render() {
@@ -8,7 +9,12 @@ export default class Nav extends React.Component {
         <Header
           title="drawer"
           placement="left"
-          leftComponent={<Icon name="map" color="white" type="foundation" />}
+          leftComponent={
+            <Image
+              source={require('../assets/cityscape.png')}
+              style={{ height: 24, width: 24 }}
+            />
+          }
           centerComponent={{
             text: 'Day Tripper',
             style: {

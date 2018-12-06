@@ -26,7 +26,10 @@ class HomeScreen extends React.Component {
     return (
       <View elevation={5} style={styles.container}>
         <Image source={BgImg} style={styles.backgroundImage} />
-
+        <Image
+          source={require('../assets/logo.png')}
+          style={{ height: 140, width: 200 }}
+        />
         <TouchableOpacity
           style={{
             backgroundColor: 'rgb(0, 112, 149)',
