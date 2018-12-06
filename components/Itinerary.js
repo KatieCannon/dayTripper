@@ -4,7 +4,7 @@ import _ from "lodash";
 import { Button, Tile, Overlay } from "react-native-elements";
 import BgImg from "../assets/bgImgDT.png";
 import Nav from "./Nav";
-import ActivityIndicator from "./ActivityIndicator";
+
 
 export default class ItineraryScreen extends React.Component {
   state = {
@@ -44,11 +44,6 @@ export default class ItineraryScreen extends React.Component {
       width: this.state.contentSize.width,
       height: this.state.contentSize.height
     };
-    if (this.state.loading) {
-      return (
-        <ActivityIndicator openDrawer={this.props.navigation.openDrawer} />
-      );
-    } else {
       return (
         <ScrollView
           style={{ height: "80%" }}

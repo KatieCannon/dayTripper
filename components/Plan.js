@@ -5,7 +5,6 @@ import * as api from "../api";
 import { Button, FormInput, FormLabel } from "react-native-elements";
 import BgImg from "../assets/bgImgDT.png";
 import Nav from "./Nav";
-import ActivityIndicator from "./ActivityIndicator";
 
 export default class PlanScreen extends React.Component {
   state = {
@@ -20,11 +19,6 @@ export default class PlanScreen extends React.Component {
   }
 
   render() {
-    if (this.state.loading) {
-      return (
-        <ActivityIndicator openDrawer={this.props.navigation.openDrawer} />
-      );
-    } else {
       return (
         <View
           style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
