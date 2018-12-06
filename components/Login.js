@@ -13,7 +13,7 @@ import BgImg from "../assets/bgImgDT.png";
 
 export default class LoginScreen extends React.Component {
   state = {
-    username: "williamwalkers",
+    username: "",
     password: ""
   };
   render() {

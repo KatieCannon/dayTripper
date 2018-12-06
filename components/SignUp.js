@@ -12,7 +12,7 @@ import BgImg from "../assets/bgImgDT.png";
 
 export default class SignUpScreen extends React.Component {
   state = {
-    username: `${Date.now()}`
+    username: ``
   };
   render() {
     return (
