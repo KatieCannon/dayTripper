@@ -64,7 +64,7 @@ const MapPins = props => {
                   )
                 }}
               />
-              {this.state.isCloseToDestination && (
+              {/* {this.state.isCloseToDestination && (
                 <Button
                   buttonStyle={{
                     backgroundColor: "rgba(0, 112, 149, 0.7)",
@@ -79,7 +79,7 @@ const MapPins = props => {
                   title="Check In"
                   onPress={props.checkIn}
                 />
-              )}
+              )} */}
               <Button title={attraction.name} onPress={() => console.log()} />
 
               <Text>{attraction.intro}</Text>
