@@ -10,8 +10,15 @@ import {
 } from "react-native";
 
 const MapPins = props => {
+  const imageHandler = (images, defaultImage) => {
+    for (let i = 0; i < images.length; i++) {
+      if (/(wiki)|(bookatable)/.test(images[i].image)) return images[i].image;
+    }
+    return defaultImage;
+  };
   return props.attractions.map(attraction => {
     let color = "#ff0000";
+    console.log(props);
 
     if (
       props.checkedInLocations.some(
@@ -50,10 +57,31 @@ const MapPins = props => {
             <ScrollView>
               <Image
                 style={Styles.placeImage}
-                source={{ uri: attraction.images[0].image }}
+                source={{
+                  uri: imageHandler(
+                    attraction.images,
+                    "https://www.visitmanchester.com/imageresizer/?image=%2Fdbimgs%2FCityscape%20Sunset%20website.jpg&action=Background_Overlay"
+                  )
+                }}
               />
+              {/* {this.state.isCloseToDestination && (
+                <Button
+                  buttonStyle={{
+                    backgroundColor: "rgba(0, 112, 149, 0.7)",
+                    position: "absolute",
+                    borderRadius: 5,
+                    marginBottom: 30,
+                    marginTop: 20,
+                    borderWidth: 1,
+                    width: "89%",
+                    top: 69
+                  }}
+                  title="Check In"
+                  onPress={props.checkIn}
+                />
+              )} */}
               <Button title={attraction.name} onPress={() => console.log()} />
-              {/* <Text style={Styles.calloutHeader}></Text> */}
+
               <Text>{attraction.intro}</Text>
             </ScrollView>
           </View>
