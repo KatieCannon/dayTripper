@@ -18,8 +18,6 @@ const MapPins = props => {
   };
   return props.attractions.map(attraction => {
     let color = "#ff0000";
-    console.log(props);
-
     if (
       props.checkedInLocations.some(
         place =>
@@ -64,23 +62,8 @@ const MapPins = props => {
                   )
                 }}
               />
-              {/* {this.state.isCloseToDestination && (
-                <Button
-                  buttonStyle={{
-                    backgroundColor: "rgba(0, 112, 149, 0.7)",
-                    position: "absolute",
-                    borderRadius: 5,
-                    marginBottom: 30,
-                    marginTop: 20,
-                    borderWidth: 1,
-                    width: "89%",
-                    top: 69
-                  }}
-                  title="Check In"
-                  onPress={props.checkIn}
-                />
-              )} */}
-              <Button title={attraction.name} onPress={() => console.log()} />
+
+              <Button title={attraction.name} onPress={() => null} />
 
               <Text>{attraction.intro}</Text>
             </ScrollView>

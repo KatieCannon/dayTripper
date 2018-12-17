@@ -1,46 +1,45 @@
-import React from 'react';
+import React from "react";
 import {
   View,
   Image,
   StyleSheet,
   ScrollView,
-  KeyboardAvoidingView,
-} from 'react-native';
-import { FormInput, FormLabel, Button, Card } from 'react-native-elements';
-import Nav from './Nav';
-import BgImg from '../assets/bgImgDT.png';
-import * as api from '../api';
+  KeyboardAvoidingView
+} from "react-native";
+import { FormInput, FormLabel, Button, Card } from "react-native-elements";
+import Nav from "./Nav";
+import BgImg from "../assets/bgImgDT.png";
+import * as api from "../api";
 
 export default class ProfileScreen extends React.Component {
   state = {
-    FirstName: '',
-    LastName: '',
-    Email: '',
-    DOB: '',
+    FirstName: "",
+    LastName: "",
+    Email: "",
+    DOB: ""
   };
   render() {
     const username = this.props.navigation.state.params.userDetails.username;
     return (
       <KeyboardAvoidingView
         behavior="padding"
-        style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
+        style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
         enabled
       >
         <Image source={BgImg} style={styles.backgroundImage} />
         <Nav
           openDrawer={this.props.navigation.openDrawer}
-          style={{ position: 'absolute' }}
+          style={{ position: "absolute" }}
         />
-        
+
         <Card containerStyle={{ width: 300 }}>
-         
           <FormLabel
             labelStyle={{
               fontSize: 16,
-              fontFamily: 'KohinoorDevanagari-Semibold',
+              fontFamily: "KohinoorDevanagari-Semibold"
             }}
           >
-            First Name:{' '}
+            First Name:{" "}
           </FormLabel>
           <FormInput
             placeholder="Jane"
@@ -50,10 +49,10 @@ export default class ProfileScreen extends React.Component {
           <FormLabel
             labelStyle={{
               fontSize: 16,
-              fontFamily: 'KohinoorDevanagari-Semibold',
+              fontFamily: "KohinoorDevanagari-Semibold"
             }}
           >
-            Last Name:{' '}
+            Last Name:{" "}
           </FormLabel>
           <FormInput
             placeholder="Doe"
@@ -63,10 +62,10 @@ export default class ProfileScreen extends React.Component {
           <FormLabel
             labelStyle={{
               fontSize: 16,
-              fontFamily: 'KohinoorDevanagari-Semibold',
+              fontFamily: "KohinoorDevanagari-Semibold"
             }}
           >
-            Email:{' '}
+            Email:{" "}
           </FormLabel>
           <FormInput
             placeholder="jane@internet.com"
@@ -76,10 +75,10 @@ export default class ProfileScreen extends React.Component {
           <FormLabel
             labelStyle={{
               fontSize: 16,
-              fontFamily: 'KohinoorDevanagari-Semibold',
+              fontFamily: "KohinoorDevanagari-Semibold"
             }}
           >
-            D.O.B :{' '}
+            D.O.B :{" "}
           </FormLabel>
           <FormInput
             placeholder="DD/MM/YYYY"
@@ -91,22 +90,20 @@ export default class ProfileScreen extends React.Component {
             fontFamily="KohinoorDevanagari-Semibold"
             buttonStyle={{
               marginTop: 30,
-              backgroundColor: 'rgb(0, 112, 149)',
+              backgroundColor: "rgb(0, 112, 149)",
               borderRadius: 10,
               borderWidth: 1,
               width: 200,
-              alignSelf: 'center',
+              alignSelf: "center"
             }}
-            fontWeight={'bold'}
-            
+            fontWeight={"bold"}
             title="Add my Info!"
             onPress={() => {
               api
                 .updateUserInfo(username, this.state)
                 .then(user => {
-                  console.log(user);
-                  this.props.navigation.navigate('Preferences', {
-                    userDetails: user.Attributes,
+                  this.props.navigation.navigate("Preferences", {
+                    userDetails: user.Attributes
                   });
                 })
                 .catch(err => {
@@ -114,9 +111,7 @@ export default class ProfileScreen extends React.Component {
                 });
             }}
           />
-       
         </Card>
-      
       </KeyboardAvoidingView>
     );
   }
@@ -124,7 +119,7 @@ export default class ProfileScreen extends React.Component {
 const styles = StyleSheet.create({
   backgroundImage: {
     flex: 1,
-    position: 'absolute',
-    resizeMode: 'cover',
-  },
+    position: "absolute",
+    resizeMode: "cover"
+  }
 });

@@ -42,7 +42,7 @@ export default class ItineraryScreen extends React.Component {
       width: this.state.contentSize.width,
       height: this.state.contentSize.height
     };
-    console.log(this.props.navigation.state.params.userDetails);
+    // console.log(this.props.navigation.state.params.userDetails);
     return (
       <>
         <Nav
@@ -139,7 +139,6 @@ export default class ItineraryScreen extends React.Component {
     );
   }
   componentDidMount = () => {
-    console.log("log 1");
     this.randomAttractionsHandler();
   };
 }

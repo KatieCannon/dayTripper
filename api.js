@@ -5,7 +5,6 @@ import geolib from "geolib";
 const DB_URL = "https://xprfmsf0pb.execute-api.eu-west-1.amazonaws.com/dev";
 
 export const createUserProfile = username => {
-  console.log(username);
   return fetch(`${DB_URL}/createUser`, {
     method: `POST`,
     headers: {
@@ -74,14 +73,17 @@ export const getDirections = (startLoc, destinationLoc) => {
       .then(response => response.json())
       //decodes the response
       .then(responseJson => {
-        let points = Polyline.decode(
-          responseJson.routes[0].overview_polyline.points
-        );
-        let coords = points.map(point => ({
-          latitude: point[0],
-          longitude: point[1]
-        }));
-        return coords;
+        if (responseJson.routes.length > 0) {
+          let points = Polyline.decode(
+            responseJson.routes[0].overview_polyline.points
+          );
+          let coords = points.map(point => ({
+            latitude: point[0],
+            longitude: point[1]
+          }));
+          return coords;
+        }
+        return [];
       })
       .catch(error => {
         console.error(error);

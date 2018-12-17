@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  View,
-  StyleSheet,
-  Image,
-  KeyboardAvoidingView
-} from "react-native";
+import { View, StyleSheet, Image, KeyboardAvoidingView } from "react-native";
 import * as api from "../api";
 import { Button, FormInput, FormLabel } from "react-native-elements";
 import BgImg from "../assets/bgImgDT.png";
@@ -18,7 +13,6 @@ export default class PlanScreen extends React.Component {
   };
 
   render() {
-    console.log();
     return (
       <>
         <Nav
